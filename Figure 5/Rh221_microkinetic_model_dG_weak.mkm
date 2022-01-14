@@ -1,0 +1,48 @@
+&compounds
+# gas phase compounds
+# name ; surface? ; initial concentration
+H2;        0;    0.04
+C6H5OH;   0;    0.96
+C6H6OH;    0;    0
+C6H7OH;    0;    0
+C6H8OH;    0;    0
+C6H9OH;    0;    0
+C6H10O;   0;    0
+C6H10OH;  0;    0
+C6H11OH;  0;    0
+# surface compounds (denote with a star)
+H*;       1;    0
+C6H5OH*;  1;    0
+C6H6OH*;   1;    0
+C6H7OH*;   1;    0
+C6H8OH*;   1;    0
+C6H9OH*;   1;    0
+C6H10O*;  1;    0
+C6H10OH*; 1;    0
+C6H11OH*; 1;    0
+# free sites on the surface
+*;        1;    1
+
+&reactions
+AR; {H2} + 2{*} => 2{H*}; 6.25e12; 6.25e12; 0; 30.6e3; 1
+AR; {C6H5OH} + {*}  => {C6H5OH*}; 6.25e12; 6.25e12; 0; 7e3; 1
+AR; {C6H5OH*} + {H*} => {C6H6OH*} + {*}; 6.25e12; 6.25e12; 71.6e3 ; 0.2e3; 1
+AR; {C6H6OH*} + {H*} => {C6H7OH*} + {*}; 6.25e12; 6.25e12; 65.9e3; 6.5e3; 1
+AR; {C6H7OH*} + {H*} => {C6H8OH*} + {*}; 6.25e12; 6.25e12; 37.8e3; 17.9e3; 1
+AR; {C6H8OH*} + {H*} => {C6H9OH*} + {*}; 6.25e12; 6.25e12; 65.3e3; 60.4e3; 1
+AR; {C6H9OH*}       => {C6H10O*}; 6.25e12; 6.25e12; 36.0e3; 65.9e3; 1
+AR; {C6H10O} + {*} => {C6H10O*}; 6.25e12; 6.25e12; 0; -101.5e3; 1
+
+&settings
+TYPE = SEQUENCERUN
+# pressure in bar
+PRESSURE = 1
+REAGENTS = {H2}, {C6H5OH}
+KEYCOMPONENTS = {C6H10O}
+DRC = 1
+EACT = 1
+
+&runs
+290; 1e9; 1e-12; 1e-12
+300; 1e9; 1e-12; 1e-12
+310; 1e9; 1e-12; 1e-12
